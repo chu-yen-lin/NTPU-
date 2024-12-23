@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <form action="">
+    <p><input type = "text" name = "c_name" id="c_name"on placeholder="姓名...">
+    </p>
+    <p><input type="submit" value="送出"></p>
+    </form>
+
+<script>
+
+let c_name=document.getElementById('c_name');
+
+//c_name.onfocus = function(e){
+    //alert('c_name focus' )
+
+c_name.onblur = function(e){
+
+    alert('c_name blur' );
+}
+    c_name.onchange = function(e){
+let value = e.currentTarget.value;
+alert('c_name change ------' + value );
+
+}
+document.getElementById('confirm').onsubmit= function(){
+    alert('submit' )
+}
+</script>
+
+
+</body>
+</html>

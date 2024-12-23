@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        //Q1 . 1+到100的總和
+        let total = 0;
+        for (let i = 1; i <= 100; i++) {
+            document.write(i + ' + ');
+            total += i;
+        }
+        document.write(' = ' + total);
+
+        document.write(' <hr> ');
+        //=============================
+        // Q2. 1+到100的奇數和? 
+
+        total = 0;
+        let start = 1;
+        let end = 100;
+        let step = 2;
+        let i = start;
+        while (i <= end) {
+
+            if (i > start) { document.write(' + '); }
+            document.write(i);
+            total += i;
+            i += step
+        }
+
+
+        document.write(' = ' + total);
+
+        document.write(' <hr> ');
+        //===Q4 三位數中7的倍數和?
+
+
+        total = 0
+        start = 100
+        end = 999
+        step = 7
+        start = start + step - ((start + step) % step);
+
+
+        for (let i = start; i <= end; i += step) {
+            if (i > start) { document.write(' + '); }
+            document.write(i);
+            total += i;
+        }
+        document.write(' = ' + total);
+        document.write(' <hr> ');
+        //===Q5.列出99乘法表
+
+        for (let i = 1; i <= 9; i++) {
+            for (let j = 1; j <= 9; j++) {
+                document.write(i + 'x' + j + '=' + (i * j) + '<br>')
+            }
+            document.write('-----------<br>')
+        }
+
+//int y=1;
+//int x=1;
+//int main(){
+    //while (y<=9){
+      //while (x<=9){
+         //printf("%d*%d=%d\t",y,x,y*x );
+         //x++;
+         //}
+      //y++;
+      //x=1;
+      //printf("\n");
+      //}
+//return 0;
+//}
+
+
+        //===作業練習: 列出1到100的質數
+
+        //===Q6.由電腦抽號(0~9)
+        //如果得到1~9有對應獎品, 並且繼續抽
+        //如果得到0號則「銘謝惠顧」並且結束抽獎
+        let no = 0;
+        do{
+            no = Math.floor(Math.random() * 10);
+        if( no!=0 ){ document.write('抽到'+ no +'號獎品<br>') ;}
+    }while(no!=0);
+        document.write('抽到'+ no +'銘謝貴顧!');
+        
+
+
+    </script>
+
+</body>
+
+
+</html>

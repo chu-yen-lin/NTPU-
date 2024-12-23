@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //let num = Math.round(Math.random() * 100)
+        let num = Math.floor(Math.random() * 100) + 1;
+
+        //console.log(num);
+        document.write('抽到的號碼是:' + num);
+
+        //如果抽到的是奇數, 請進奇數門
+        //否則是偶數, 請進偶數門
+        let oddeven = ''; 
+        if (num % 2 === 0) {
+            oddeven = '偶數'; 
+            document.write('，請進偶數門');
+            
+        } else {
+            oddeven = '奇數';
+            document.write('，請進奇數門');
+
+
+        }
+
+        if (num < 10) {
+            document.write('，請到1樓。');
+        } else if (num < 100) { document.write('，請到2樓。'); }
+        else {
+            document.write('，請到3樓。');
+        }
+
+        
+//抽到41-49, 恭喜抽到4x特別獎
+if (num>=41 && num<=49 ) {
+            document.write('<br>恭喜抽到4x獎。');
+        } 
+
+        
+//抽到重疊號碼, 恭喜抽到特殊幸運獎
+if( ( num < 100 &&  num % 11 === 0) || (  num % 111 === 0)  ){
+    document.write('<br>恭喜抽到重疊特殊獎。');}
+
+    //Q4==========
+
+num = 3;
+document.write('<br>改成'+num);
+
+    switch( num ){
+        case 1 : document.write('<br>擔任'+oddeven+'1樓服務員');break;
+
+        case 2 : document.write('<br>擔任'+oddeven+'1樓服務員');break;
+        case 3 : document.write('<br>擔任'+oddeven+'2樓服務員');break;
+        case 4 : document.write('<br>擔任'+oddeven+'2樓服務員');break;
+        case 5 : document.write('<br>擔任'+oddeven+'3樓服務員');break;
+        case 6 : document.write('<br>擔任'+oddeven+'3樓服務員');break;
+    }
+
+    //qqqqqqqqqqq============//
+    let now = new Date();
+    let week = now.getDay();
+    console.log(week);
+
+    document.write('今天是星期');
+    switch (week) {
+        case 0 : document.write('日');break;
+        case 1 : document.write('一');break;
+        case 2 : document.write('二');break;
+        case 3 : document.write('三');break;
+        case 4 : document.write('四');break;
+        case 5 : document.write('五');break;
+        case 6 : document.write('六');break;
+
+    }
+
+    
+    </script>
+</body>
+
+</html>

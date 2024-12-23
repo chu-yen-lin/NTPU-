@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+      * { box-sizing: border-box; margin: 0; }
+      body { height: 100vh; display: flex; flex-direction: column; 
+        font-family: Arial, Helvetica, sans-serif; font-size: 1.5em; }
+      header { background-color: #9cd3d8; min-height: 150px; }
+      main { background-color: #e9e9e9 ; min-height: 300px; flex: 1; }
+      p { padding: 1rem; }
+      footer { background-color: #0b698b; padding: 1rem; text-align: center; }
+      .currTime { text-align: right; }
+      .ctrTimeArea { text-align: right; padding: 0 1rem; }
+      .ctrTimeArea button { cursor: pointer; font-size: 20px; padding: .5rem 1rem; }
+    </style>
+  </head>
+
+  <body>
+
+    <header id="header">
+      <p class="currTime">目前時間：<span id="currTime"></span></p>
+      <p class="ctrTimeArea"><button>停止時間</button></p>
+    </header>
+
+    <main>
+      <p>登入時間：<span id="loginTime"></span></p>
+
+      <p>特惠活動載止日
+        <span id="endTimeY">2025</span>年
+        <span id="endTiemM">1</span>月
+        <span id="endTimeD">1</span>日
+      </p>
+
+      <p>倒數計時：<span id="countdown"></span></p>
+    </main>
+
+    <footer></footer>
+<script>
+// let num = document.getElementsByTagName('p').length;
+      // console.log(num);
+
+      // document.getElementById('header').style.backgroundColor = 'pink';
+
+      // document.getElementById('header').onclick = function(){
+      //   alert('喔喔~ header區域被按了！');
+      // }
+      
+      
+      //登入時間
+      let now = Date();
+      document.getElementById('loginTime').innerHTML = now;
+      document.querySelector('footer').innerHTML = now;
+
+      
+      //目前時間
+      let timer1;
+
+      function runTime(){
+        // let now = Date();    
+        // Date() 是執行時間類函式的預設程式, 並且取得格式化後的「字串」
+
+        let now = new Date();
+        // new Date() 是取得目前完整時間, 並且建立成為「時間物件」
+
+        nowY = now.getFullYear();   //取得年份
+        nowM = now.getMonth() + 1;  //取得月份
+        nowD = now.getDate();       //取得一月中的日數
+        nowW = now.getDay();        //取得一週中的日數
+        nowH = now.getHours();      //取得時數部份
+        nowI = now.getMinutes();    //取得分數部份
+        nowS = now.getSeconds();    //取得秒數部份
+
+        //加以調整
+        if( nowM < 10 ){ nowM = '0' + nowM; }
+        if( nowD < 10 ){ nowD = '0' + nowD; }
+        if( nowH < 10 ){ nowH = '0' + nowH; }
+        if( nowI < 10 ){ nowI = '0' + nowI; }
+        if( nowS < 10 ){ nowS = '0' + nowS; }
+        
+        switch( nowW ){
+          case 0:   nowW = '日';  break;
+          case 1:   nowW = '一';  break;
+          case 2:   nowW = '二';  break;
+          case 3:   nowW = '三';  break;
+          case 4:   nowW = '四';  break;
+          case 5:   nowW = '五';  break;
+          case 6:   nowW = '六';  break;
+        }
+
+        nowStr = nowY+'年'+nowM+'月'+nowD+'日星期'+nowW+' '+nowH+':'+nowI+':'+nowS;
+        document.querySelector('#currTime').innerHTML = nowStr;
+
+        timer1 = setTimeout(runTime, 1000);  //設定1000毫秒後執行一次runTime函式
+      }
+
+      // setInterval(runTime, 1000);    //每隔1000毫秒後執行一次runTime函式
+      runTime();                        //馬上執行一次runTime函式
+
+
+      //設計按鈕 負責「停止時間/啟動時間」的工作
+      function ctrTime(obj) {
+        let label = obj.innerHTML;
+        if (label == '停止時間') {
+          clearTimeout(timer1);
+          obj.innerHTML = '啟動時間';
+        } else {
+          runTime();
+          obj.innerHTML = '停止時間';
+        }
+      }
+
+
+      //設計倒數計時
+      let endTime = new Date(2025, 0, 3);   //指定到期時間, 表示2024年10月10日00:00:00
+      let endTimems = endTime.getTime();
+      //取得指定時間的時間戳(1970.1.1 00:00:00起到指定時間經過的毫秒數)
+      document.querySelector('#endTimeY').innerHTML = endTime.getFullYear();
+      document.querySelector('#endTiemM').innerHTML = endTime.getMonth() + 1;
+      document.querySelector('#endTimeD').innerHTML = endTime.getDate();
+
+      function calcTime (){
+        let now = new Date();
+        let nowms = now.getTime();
+        let offsetTime = ( endTimems - nowms ) / 1000;
+
+        let sec = Math.floor( offsetTime % 60 );            //秒
+        let min = Math.floor( offsetTime / 60 % 60 );       //分
+        let hr  = Math.floor( offsetTime / 60 / 60 % 24 );  //時
+        let day = Math.floor( offsetTime / 60 / 60 / 24 );  //天
+
+        if( sec < 10 ){ sec = '0' + sec; }
+        if( min < 10 ){ min = '0' + min; }
+        if( hr  < 10 ){ hr  = '0' + hr;  }
+        if( day < 10 ){ day = '0' + day; }
+
+        let result = day + '天' + hr + '時' + min + '分' + sec + '秒';
+        document.querySelector('#countdown').innerHTML = result;
+      }
+
+      setInterval(calcTime, 1000);
+      calcTime();
+</script>
+
+
+  </body>
+
+</html>

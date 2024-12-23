@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+n=100;
+count=1;
+document.writeln("<center>");
+document.writeln("<table border=1>");
+
+for (i=1; i<=n; i++){
+	maxDivisor=Math.sqrt(i);
+	isPrime=1;
+	for (j=2; j<=maxDivisor; j++)
+		if (i%j==0){
+			isPrime=0;
+			break;
+		}
+	if (isPrime)
+		document.writeln("<tr><td>"+(count++)+"<td>"+i);
+}
+document.writeln("</table>");
+document.writeln("</center>");
+    </script>
+</body>
+</html>

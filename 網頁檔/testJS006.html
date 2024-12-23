@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let arr1 = [100, 200, 300];
+        console.log(arr1);
+
+
+        let arr2 = [];
+        arr2[0] = '張三';
+        arr2[1] = '李四';
+        console.log(arr2);
+
+        arr1.push(400);
+        console.log(arr1);
+        console.log(arr1.indexOf(100)); //0
+        console.log(arr1.indexOf(200)); //1
+        console.log(arr1.indexOf(400)); //3
+        console.log(arr1.indexOf(888)); //-1
+
+        //模擬大樂透電腦選號
+        //準備記錄用array
+        //準備迴圈, 判斷停止的條件?
+        //迴圈中隨機抽號-判斷array是否已存在 >不存在則push進array
+        //迴圈結束 => document.write 顯示array的結果
+
+        let arr3 = [];
+        let i = 1;
+        while (arr3.length < 7) {
+            let num = Math.floor(Math.random() * 49) + 1;
+            if (arr3.indexOf(num) === -1) {
+                arr3.push(num);
+                i++;
+            } else {
+                document.write('<br>' + num + '重複了棄用');
+            }
+        }
+        document.write('<br>大樂透電腦選號' + arr3);
+
+        arr3.sort();
+        document.write('<br>電腦選號sort後的結果: ' + arr3);
+
+        arr3.sort(function (a, b) { return b - a; });
+        document.write('<br>電腦選號由大到小排序結果:' + arr3);
+
+    </script>
+    <hr>
+    <script>
+        document.write('<br>' + arr3);
+        console.log(arr3);
+        console.log(typeof arr3);
+
+
+
+
+        arr4 = arr3.join();
+        document.write('<br>' + arr3)
+        console.log(arr4);
+        console.log(typeof arr4);
+    </script>
+    <hr>
+    <script>
+        function myFn1(v, i) {
+            document.write('電腦選號結果:第' + (i + 1) + '個是' + v + '號<br>');
+        }
+
+        arr3.forEach(myFn1);
+
+    </script>
+    <hr>
+    <script>
+        function myFn2(num) {
+            return num * 10;
+
+        }
+        let arr5 = arr3.map(myFn2);
+        document.write('new array:' + num + ''');
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+
+    <script src="./testJSwe.js"></script>
+
+    <script>
+        // 撰寫js的區域
+        alert('Hello~~~~~2');
+    </script>
+
+    <style>
+        /* 撰寫css的區域 */
+    </style>
+
+</head>
+
+<body>
+
+    <header id="top" style="background-color: aqua;">
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vero sed obcaecati in sunt consectetur facere aliquam
+        recusandae libero quibusdam hic, odio minima eligendi placeat voluptatibus a sapiente! Ab, explicabo autem!
+    </header>
+    <button id="mybtn">my bttn</button>
+
+
+
+    <script>
+        // 撰寫js的區域
+        //window.alert('Hello~~~~~3');/
+        //window.confirm('有確定嗎????');/
+        document.write('Hello~~~~~4');
+
+        const obj = document.getElementsByTagName('header').item(0);
+        console.log(obj.innerHTML);
+        obj.innerHTML = '<h1>Hello~~~~5</h1>';  
+        console.log(obj.innerHTML);
+        console.log(obj.textContent);
+        document.getElementsByTagName('top').innerHTML = 'Hello~~~~6';
+
+
+        console.log();
+
+
+        document.getElementById('top').innerHTML = 'Hello~~~6'
+
+        console.log('只是測試~~~~');
+        console.log(document.getElementsByTagName('header').length);
+
+        document.getElementById('#mybtn').onmouseenter = function () { console.log('onmouseenter'); }
+        document.getElementById('#mybtn').onmouseover = function () { console.log('onmouseover'); }
+        document.getElementById('#mybtn').onmousedown = function () { console.log('onmousedown'); }
+        document.getElementById('#mybtn').onmouseup = function () { console.log('onmouseup'); }
+        document.getElementById('#mybtn').onclick = function () { console.log('onclick'); }
+        document.getElementById('#mybtn').onmouseout = function () { console.log('onmouseout'); }
+        document.getElementById('#mybtn').onmouseleave = function () { console.log('onmouseleave'); }
+
+
+    </script>
+</body>
+
+</html>
